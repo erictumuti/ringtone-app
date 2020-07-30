@@ -36,7 +36,7 @@
       <td>{{$ringtone->title}}</td>
       <td>{{$ringtone->description}}</td>
       <td>
-      <audio controls type="audio/ogg" src="/audio/{{$ringtone->file}}" onplay="pauseOthers(this);"></audio>
+      <audio controls controlsList="nodownload" type="audio/ogg" src="/audio/{{$ringtone->file}}" onplay="pauseOthers(this);"></audio>
       </td>
       <td>{{$ringtone->category->name}}</td>
       <td>{{$ringtone->size}}bytes</td>

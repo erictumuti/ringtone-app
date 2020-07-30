@@ -18,6 +18,7 @@ function pauseOthers(element) {
                 });
             }
 </script>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5f22e44b341ea4ac"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -46,6 +47,11 @@ function pauseOthers(element) {
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+                        @if(!Auth::check())
+                        <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/') }}">{{ __('Ringtones') }}</a>
+                            </li>
+                        @endif
                         @if(Auth::check())
                         <li class="nav-item">
                                 <a class="nav-link" href="{{ route('ringtones.index') }}">{{ __('Manage Ringtones') }}</a>

@@ -13,13 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::group(array('namespace'=>'Backend','middleware'=>'auth'),function(){
 Route::resource('/ringtones','RingtoneController');
 });
+Route::group(array('namespace'=>'Frontend'),function(){
+    Route::get('/','RingtoneController@index');
+    Route::get('/ringtone/{id}/{slug}','RingtoneController@show')->name('ringtones.show');
+    Route::post('/ringtone/download/{id}','RingtoneController@downloadRingtone')->name('ringtones.download');
+    Route::get('/category/{id}','RingtoneController@category')->name('ringtones.category');
+    });
 Auth::routes([
     'register'=>false
 ]);
