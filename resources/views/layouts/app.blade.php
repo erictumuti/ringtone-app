@@ -11,6 +11,13 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script type="text/javascript">
+function pauseOthers(element) {
+                $("audio").not(element).each(function (index, audio) {
+                    audio.pause();
+                });
+            }
+</script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -39,6 +46,11 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+                        @if(Auth::check())
+                        <li class="nav-item">
+                                <a class="nav-link" href="{{ route('ringtones.index') }}">{{ __('Manage Ringtones') }}</a>
+                            </li>
+                        @endif
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>

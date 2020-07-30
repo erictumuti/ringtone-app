@@ -17,6 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::group(array('namespace'=>'Backend','middleware'=>'auth'),function(){
+Route::resource('/ringtones','RingtoneController');
+});
 Auth::routes([
     'register'=>false
 ]);
